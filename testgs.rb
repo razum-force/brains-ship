@@ -19,26 +19,34 @@ def ships_added?
 end
 
 
-Shoes.app(width: 520, height: 600) do	
+Shoes.app(width: 800, height: 600) do	
 	extend Draw
 
 	GAME = Draw::Game.new
 	SHIP = Ship.new
+	setup_done = false
 	draw_board
+	draw_enemy_board
+
 
 	button("OK") do
-		if ships_added?
+		if ships_added? && !setup_done
 			alert "Корабли расставлены! начинаем игру"
-
-		else
+			setup_done = true
+		elsif !setup_done
 			alert "Что-то пошло не так. Исправьте расстановку!"
 			SHIP = Ship.new
+		else
+			alert "Вы уже начали игру, стреляйте по полю противника!"
 		end
 	end
 
 	click do |button, x, y|
-		if coords = find_piece(x,y)
+		if (coords = find_piece(x,y,0)) && (!setup_done)
 			toggle_rectangle(coords)
+		end
+		if (coords = find_piece(x,y,1)) && setup_done
+			fire_enemy(coords)
 		end
 	end
 
