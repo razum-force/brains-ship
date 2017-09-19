@@ -8,13 +8,14 @@ module Draw
 	class Game
 		BOARD_SIZE = [10,10]
 
-		attr_accessor :board, :battle_field, :enemy_board, :enemy_battle_field
+		attr_accessor :board, :battle_field, :enemy_board, :enemy_battle_field, :comp_shot
 
 		def initialize
 			@board = new_board
 			@battle_field = new_board
 			@enemy_board = new_board
 			@enemy_battle_field = new_board
+			@comp_shot = init_comp_shots
 		end
 
 		def new_board
@@ -22,6 +23,23 @@ module Draw
 				Array.new(BOARD_SIZE[1]) do
 				end
 			end
+		end
+
+		def init_comp_shots
+			init = Array.new(BOARD_SIZE[0]*BOARD_SIZE[1])
+			x = 0
+			i = 0
+			BOARD_SIZE[0].times do
+				y = 0
+				BOARD_SIZE[1].times do
+					init[i] = [x,y]
+					i += 1
+					y += 1
+				end
+				x += 1
+			end
+			p init
+			return init
 		end
 	end
 
@@ -60,6 +78,19 @@ module Draw
 			fill red
 			rect(left: GAME.enemy_board[col][row].left, top: GAME.enemy_board[col][row].top, width: PIECE_WIDTH, height: PIECE_HEIGHT)
 			GAME.enemy_battle_field[col][row] = 2
+		end		
+	end
+
+	def comp_fire
+		col, row = GAME.comp_shot.shuffle!.pop
+		if GAME.battle_field[col][row] == nil
+			fill green
+			rect(left: GAME.board[col][row].left, top: GAME.board[col][row].top, width: PIECE_WIDTH, height: PIECE_HEIGHT)
+			GAME.battle_field[col][row] = 3
+		elsif GAME.battle_field[col][row] == 1
+			fill red
+			rect(left: GAME.board[col][row].left, top: GAME.board[col][row].top, width: PIECE_WIDTH, height: PIECE_HEIGHT)
+			GAME.battle_field[col][row] = 2
 		end		
 	end
 

@@ -19,7 +19,7 @@ class Ship
 	end
 
 	def add_ship_to_hash
-		@overall.each {|ship| SHIP.hash[ship.size] << ship}
+		@overall.each {|ship| self.hash[ship.size] << ship}
 	end
 
 	def non_repeat_coords?(col, row)
