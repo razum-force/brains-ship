@@ -20,51 +20,6 @@ def ships_added?
 end
 
 def add_enemy_ship
-	# GAME.enemy_battle_field[0][0] = 1
-	# GAME.enemy_battle_field[1][0] = 1
-	# GAME.enemy_battle_field[2][0] = 1
-	# GAME.enemy_battle_field[3][0] = 1
-
-	# GAME.enemy_battle_field[5][1] = 1
-	# GAME.enemy_battle_field[6][1] = 1
-	# GAME.enemy_battle_field[7][1] = 1
-
-	# GAME.enemy_battle_field[5][3] = 1
-	# GAME.enemy_battle_field[6][3] = 1
-	# GAME.enemy_battle_field[7][3] = 1
-
-	# GAME.enemy_battle_field[8][5] = 1
-	# GAME.enemy_battle_field[9][5] = 1
-
-	# GAME.enemy_battle_field[8][7] = 1
-	# GAME.enemy_battle_field[9][7] = 1
-
-	# GAME.enemy_battle_field[8][9] = 1
-	# GAME.enemy_battle_field[9][9] = 1
-
-	# GAME.enemy_battle_field[3][3] = 1
-
-	# GAME.enemy_battle_field[3][7] = 1
-
-	# GAME.enemy_battle_field[0][9] = 1
-
-	# GAME.enemy_battle_field[5][9] = 1
-
-	# SHIP_ENEMY.overall << [[0,0],[1,0],[2,0],[3,0]]
-	# SHIP_ENEMY.overall << [[5,1],[6,1],[7,1]]
-	# SHIP_ENEMY.overall << [[5,3],[6,3],[7,3]]
-	# SHIP_ENEMY.overall << [[8,5],[9,5]]
-	# SHIP_ENEMY.overall << [[8,7],[9,7]]
-	# SHIP_ENEMY.overall << [[8,9],[9,9]]
-	# SHIP_ENEMY.overall << [[3,3]]
-	# SHIP_ENEMY.overall << [[3,7]]
-	# SHIP_ENEMY.overall << [[0,9]]
-	# SHIP_ENEMY.overall << [[5,9]]
-	# SHIP_ENEMY.add_ship_to_hash
-
-	
-	# col, row = GAME.comp_shot.shuffle.pop
-
 	SHIP_ENEMY.add_ships
 	SHIP_ENEMY.mark_on_field(GAME.enemy_battle_field)
 	SHIP_ENEMY.add_ship_to_hash

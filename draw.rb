@@ -38,7 +38,6 @@ module Draw
 				end
 				x += 1
 			end
-			p init
 			return init
 		end
 	end
@@ -71,7 +70,7 @@ module Draw
 	def fire_enemy(coords)
 		col, row = coords
 		if GAME.enemy_battle_field[col][row] == nil
-			fill blue
+			fill gray
 			rect(left: GAME.enemy_board[col][row].left, top: GAME.enemy_board[col][row].top, width: PIECE_WIDTH, height: PIECE_HEIGHT)
 			GAME.enemy_battle_field[col][row] = 3
 		elsif GAME.enemy_battle_field[col][row] == 1
@@ -84,7 +83,7 @@ module Draw
 	def comp_fire
 		col, row = GAME.comp_shot.shuffle!.pop
 		if GAME.battle_field[col][row] == nil
-			fill green
+			fill gray
 			rect(left: GAME.board[col][row].left, top: GAME.board[col][row].top, width: PIECE_WIDTH, height: PIECE_HEIGHT)
 			GAME.battle_field[col][row] = 3
 		elsif GAME.battle_field[col][row] == 1
