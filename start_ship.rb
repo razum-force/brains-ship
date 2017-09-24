@@ -1,7 +1,7 @@
 require 'green_shoes'
+require 'pry-byebug'
 require './draw'
 require './ship'
-require 'pry-byebug'
 
 def ships_added?
 	corner_correct = true
@@ -43,7 +43,7 @@ Shoes.app(width: 800, height: 600) do
 	draw_enemy_board
 
 
-	button("OK") do
+	button("Нажмите, когда закончите расстановку") do
 		if setup_done
 			alert "Вы уже начали игру, стреляйте по полю противника!"
 		else
@@ -65,12 +65,12 @@ Shoes.app(width: 800, height: 600) do
 		end
 		if (coords = find_piece(x,y,1)) && setup_done
 			fire_enemy(coords)
-			if player_win? #НАДО СДЕЛАТЬ!!!
+			if player_win?
 				alert "Вы победили!"
 				abort
 			end
-			comp_fire #НАДО СДЕЛАТЬ!!!
-			if computer_win? #НАДО СДЕЛАТЬ!!!
+			comp_fire
+			if computer_win?
 				alert "Вы проиграли... (((((("
 				abort
 			end
